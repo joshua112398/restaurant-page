@@ -9,40 +9,97 @@ const Loader = (() => {
 
   const content = document.querySelector("#content");
   const hero = document.createElement("div");
+  const heroContent = document.createElement("div");
+  const main = document.createElement("main");
+  const heroTitle = document.createElement("h1");
+  const heroText = document.createElement("p");
 
   const setup = function() {
     hero.classList.add("hero");
     content.appendChild(hero);
     console.log("Loader");
-    Header.load();
+    loadHeader();
+    content.appendChild(main);
+
+    heroContent.classList.add("hero-content");
+    hero.appendChild(heroContent);
+    heroContent.appendChild(heroTitle);
+    heroContent.appendChild(heroText);
+    Home.loadHeroContent();
+
+    Home.loadMain();
   }
 
-  return {setup, hero};
-})();
-
-const Header = (() =>{
-
-  const load = function() {
+  const loadHeader = function() {
     const img = document.createElement("img");
+    const header = document.createElement("div");
+    const ul = document.createElement("ul");
+
     img.setAttribute("src", bread);
     img.classList.add("logo");
-    const header = document.createElement("div");
     header.classList.add("header");
-    Loader.hero.appendChild(img);
-    Loader.hero.appendChild(header);
+    hero.appendChild(img);
+    hero.appendChild(header);
+    header.appendChild(ul);
+    console.log("hey");
+
+    const links = ["HOME", "MENU", "CONTACT"];
+    for (let i = 0; i < 3; i++) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      ul.appendChild(li);
+      li.appendChild(a);
+      a.textContent = links[i];
+    }
   }
 
-  return {load};
+  return {setup, main, heroTitle, heroText};
 })();
 
-const Homepage = function() {
+const Home = (() =>{
 
-  const load = function() {
-    const body = document.querySelector("#content");
-
+  const loadHeroContent = function() {
+    Loader.heroTitle.textContent = "Pam's Pastries";
+    Loader.heroText.textContent = "Curabitur interdum nunc enim, vel sollicitudin tellus hendrerit sed. Fill your mouth with luscious and sweet pastries, fresh from the oven and baked with love and perfection. You won't find anything else like it anywhere in the country!";
   }
 
-  return {load};
-};
+  const loadMain = function() {
+    const title = "About Us";
+    const text = "Curabitur interdum nunc enim, vel sollicitudin tellus hendrerit sed. Fill your mouth with luscious and sweet pastries, fresh from the oven and baked with love and perfection. You won't find anything else like it anywhere in the country!";
+    const imgSrc = croissant;
+    const imgAlt = "croissants";
+    const homeMainElement = mainElement(imgSrc, imgAlt, title, text);
+    homeMainElement.loadElement();
+  }
+
+  return {loadMain, loadHeroContent};
+})();
+
+// Factory function for creating new main element objects, including
+// a function to load the object onto the main area of the webpage
+const mainElement = function(imageSrc, imageAlt, title, text) {
+  const mainElement = document.createElement("div");
+  const mainElementContent = document.createElement("div");
+  const elementTitle = document.createElement("h2");
+  const elementText = document.createElement("p");
+  const mainImg = document.createElement("img");
+  mainElement.classList.add("main-element");
+
+  const loadElement = function() {
+    elementTitle.textContent = title;
+    elementText.textContent = text;
+    mainImg.setAttribute("src", imageSrc);
+    mainImg.setAttribute("alt", imageAlt);
+
+    Loader.main.appendChild(mainElement);
+    mainElement.appendChild(mainElementContent);
+    mainElement.appendChild(mainImg);
+    mainElementContent.appendChild(elementTitle);
+    mainElementContent.appendChild(elementText);
+  }
+
+  return {loadElement};
+
+}
 
 Loader.setup();
