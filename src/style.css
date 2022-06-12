@@ -1,0 +1,61 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+.hero {
+    background: url(./kirsten-drew-n49BjsFf5dI-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    justify-items: center;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+}
+
+.hero ul {
+    display: flex;
+    gap: 20px;
+    color: white;
+    justify-content: center;
+}
+
+.header {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.479);
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-content {
+    box-sizing: border-box;
+    color: white;
+    background-color: rgb(83, 43, 22);
+    padding: 20px;
+    width: 100%;
+}
+
+.hero-content p {
+    width: 50%;
+}
+
