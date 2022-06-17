@@ -1,4 +1,12 @@
-# restaurant-page
+# Restaurant Page
+
+A three-tab restaurant page with a homepage, a menu page, and a contact information page. Unlike previous projects, everything is generated entirely through JavaScript instead of relying on HTML. This project serves as practice for using ES6 Modules, OOP principles, factory functions and modules, and Webpack. 
+
+# Features
+- A hero area and a header with a navigation bar to switch between the three tabs
+- A main content page that's dynamically deleted and generated based on which tab was clicked through JS
+- Uses webpack to bundle the source files 
+- Each page is separated into their own ES6 Module files, and imported/exported accordingly
 
 
 # Roadblocks
