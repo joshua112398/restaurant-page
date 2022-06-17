@@ -7,12 +7,11 @@ import {
   setup, 
   clearMain,
   main, 
-  heroTitle, 
-  heroText,
 } from "./loader.js"
 
 import {loadMainHome, loadHeroContentHome} from "./home.js"
 import {loadMainContentMenu, loadHeroContentMenu} from "./menu.js"
+import {loadMainContentContact, loadHeroContentContact} from "./contact.js"
 
 // Factory function for creating new main element objects, including
 // a function to load the object onto the main area of the webpage
@@ -56,11 +55,18 @@ const switchTab = (function() {
     clearMain();
     loadMainHome();
     loadHeroContentHome();
-  })
+  });
 
   menuTab.addEventListener("click", () => {
     clearMain();
     loadMainContentMenu();
     loadHeroContentMenu();
   });
+
+  contactTab.addEventListener("click", () => {
+    clearMain();
+    loadMainContentContact();
+    loadHeroContentContact();
+  })
+
 })();
